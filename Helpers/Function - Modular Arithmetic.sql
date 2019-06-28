@@ -1,5 +1,5 @@
 IF OBJECT_ID('UDF_ModularExponentiation') IS NULL
-    EXEC('CREATE function UDF_ModularExponentiation AS SET NOCOUNT ON;')
+    EXEC('CREATE function UDF_ModularExponentiation() returns varbinary(20) as begin return 2 end;')
 GO
 
 ALTER FUNCTION UDF_ModularExponentiation(
@@ -11,7 +11,7 @@ RETURNS INT
 AS
 BEGIN
 -- Created: 2019-06-21
--- Creator: Gunnar Sjúrðarson Knudsen
+-- Creator: Gunnar SjÃºrÃ°arson Knudsen
 -- Purpose: calculate a^b mod p, by using the identity "(a*b)%p = ((a % p) * (b % p)) % p"
 -- Remarks:
 --       2019-06-28: Can be greatly optimized by using algorithm for Exponentiation by squaring (https://en.m.wikipedia.org/wiki/Exponentiation_by_squaring)
